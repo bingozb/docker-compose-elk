@@ -4,6 +4,8 @@ services:
     restart: always
     image: bingozb/elasticsearch
     container_name: elasticsearch
+    environment: 
+      LOGSPOUT: ignore
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ${ES_DATA_PATH}:/usr/share/elasticsearch/data
@@ -17,6 +19,8 @@ services:
     restart: always
     image: bingozb/logstash
     container_name: logstash
+    environment: 
+      LOGSPOUT: ignore
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -31,6 +35,8 @@ services:
     restart: always
     image: bingozb/kibana
     container_name: kibana
+    environment: 
+      LOGSPOUT: ignore
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
